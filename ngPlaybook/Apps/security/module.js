@@ -1,7 +1,7 @@
 ﻿(function() {
 
     var app = angular.module("security", ["common", "ngRoute",
-                                          "ngAnimate", "ngMessages"]);
+                                          "ngAnimate", "ngMessages","ngSanitize"]);
 
     var routes = [
         {

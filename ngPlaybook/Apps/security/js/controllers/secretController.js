@@ -6,6 +6,10 @@
 
         model.recipe = null;
         
+        model.getTrustedTitle = function () {
+            return $sce.trustAsHtml(model.recipe.title);
+        };
+
         recipes.getSecret().then(function(recipe) {
             model.recipe = recipe;
         });

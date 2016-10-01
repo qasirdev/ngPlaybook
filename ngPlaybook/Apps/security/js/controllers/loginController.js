@@ -1,6 +1,6 @@
 ﻿(function(module) {
 
-    var loginController = function(oauth, currentUser, alerting, loginRedirect) {
+    var loginController = function (oauth, currentUser, alerting, loginRedirect) {
         var model = this;
 
         model.username = "";
