@@ -1,14 +1,10 @@
 ﻿(function(module) {
 
-    var secretController = function (recipes, $sce) {
+    var secretController = function (recipes) {
 
         var model = this;
 
         model.recipe = null;
-        
-        model.getTrustedTitle = function () {
-            return $sce.trustAsHtml(model.recipe.title);
-        };
 
         recipes.getSecret().then(function(recipe) {
             model.recipe = recipe;

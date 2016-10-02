@@ -1,52 +1,36 @@
-﻿(function(common) {
+﻿(function (common) {
 
-    var alerting = function($timeout) {
+    var alerting = function () {
 
         var currentAlerts = [];
-        
+
+        var addAlert = function (type, message) {
+            currentAlerts.push({type:type,message:message});
+        };
+
         var addWarning = function (message) {
-            var alert = { type: "warning", message: message };
-            addAlert(alert);
+            addAlert('warning',message);
         };
-
-        var addInformation = function(message) {
-            var alert = { type: "info", message: message };
-            addAlert(alert);
+        var addSuccess = function (message) {
+            addAlert('success',message);
         };
-
-        var addDanger = function(message) {
-            var alert = { type: "danger", message: message };
-            addAlert(alert);
+        var addInfo = function (message) {
+            addAlert('info',message);
         };
-
-        var addAlert = function(alert) {
-            currentAlerts.push(alert);
-            $timeout(function() {
-                for (var i = 0; i < currentAlerts.length; i++) {
-                    if (currentAlerts[i] == alert) {
-                        currentAlerts.splice(i, 1);
-                        break;
-                    }
-                }
-            }, 10000);
+        var addDanger = function (message) {
+            addAlert('danger',message);
         };
-
-        var errorHandler = function(description) {
-            return function() {
-                addDanger(description);
-            };
-        };
-
 
         return {
-            errorHandler: errorHandler,
-            addInformation: addInformation,
-            addWarning: addWarning,
-            currentAlerts: currentAlerts
+            addAlert: addAlert,
+            addWarning:addWarning,
+            addSuccess:addSuccess,
+            addInfo:addInfo,
+            addDanger:addDanger,
+            currentAlerts:currentAlerts
         };
-
     };
 
-    common.factory("alerting", alerting);
+    module.factory('alerting', alerting);
 
 }(angular.module("common")))

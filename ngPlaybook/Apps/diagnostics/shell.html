@@ -1,4 +1,4 @@
-﻿<html ng-app="security">
+﻿<html ng-app="diagnostics">
 <head>
     <title>Ode To Food</title>
     <link href="/styles/css/bootstrap.css" rel="stylesheet" />
@@ -10,15 +10,27 @@
     <nav ng-include="'templates/nav.html'"></nav>
 
     <div class="container">
-        <div class="work-spinner">
-            <img src="/Apps/security/templates/ajax-loader.gif" />
-        </div>
         <div class="row">
-            <div class="col-md-8">
-                <div ng-view></div>
+            <div class="col-md-8" ng-controller="errorProneController as model">
+                <div>
+                    <h4>Alerts</h4>
+                    <div class="form-group">
+                        <input type="text" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control">
+                        </select>
+                    </div>
+                    <button class="btn btn-default btn-lg">Create Alert</button>
+                </div>
+                <hr/>
+                <div>
+                    <h4>Exceptions</h4>
+                    <button class="btn btn-default btn-lg">Throw Exception</button>
+                </div>
             </div>
             <div class="col-md-4">
-                <alerts></alerts>
+                
             </div>
         </div>
     </div>
@@ -29,24 +41,14 @@
     <script src="/js/angular/angular-messages.js"></script>
 
     <script src="/apps/common/module.js"></script>
-    <script src="/apps/common/js/services/oauth.js"></script>
-    <script src="/apps/common/js/services/formEncode.js"></script>
     <script src="/apps/common/js/services/alerting.js"></script>
     <script src="/apps/common/js/directives/alerts.js"></script>
-    <script src="/apps/common/js/services/localStorage.js"></script>
-    <!--<script src="/apps/common/js/services/interpolateDebug.js"></script>-->
     <script src="/apps/common/js/services/requestCounter.js"></script>
     <script src="/apps/common/js/directives/workSpinner.js"></script>
-    <script src="/apps/common/js/services/loginRedirect.js"></script>
-    <script src="/apps/common/js/services/addToken.js"></script>
-    <script src="/apps/common/js/services/currentUser.js"></script>
-    <script src="/apps/common/js/services/log.js"></script>
+    <script src="/apps/common/js/services/exceptionHandler.js"></script>
 
     <script src="module.js"></script>
-    <script src="js/controllers/loginController.js"></script>
-    <script src="js/controllers/secretController.js"></script>
-    <script src="js/services/recipes.js"></script>
-
+    <script src="js/controllers/errorProneController.js"></script>
 
 </body>
 </html>

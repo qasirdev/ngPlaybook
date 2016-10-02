@@ -8,7 +8,8 @@
         </ul>
         <div ng-controller="loginController as login">
             <div ng-show="login.user.loggedIn" class="navbar-text navbar-right">
-                Hello {{ login.user.username }}!                
+                Hello {{ login.user.username }}!
+                <button class="btn btn-default btn-sm" ng-click="login.signOut()">Sign Out</button>
             </div>
             <form ng-if="!login.user.loggedIn" name="loginForm" class="navbar-form navbar-right"
                   ng-submit="login.login(loginForm)" novalidate>
@@ -23,4 +24,3 @@
         </div>
     </div>
 </nav>
-

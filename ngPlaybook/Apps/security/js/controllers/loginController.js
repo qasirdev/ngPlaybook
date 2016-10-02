@@ -1,6 +1,6 @@
 ﻿(function(module) {
 
-    var loginController = function (oauth, currentUser, alerting, loginRedirect) {
+    var loginController = function(oauth, currentUser, alerting, loginRedirect) {
         var model = this;
 
         model.username = "";
@@ -10,14 +10,15 @@
         model.login = function(form) {
             if (form.$valid) {
                 oauth.login(model.username, model.password)
-                     .then(function () {
-                         loginRedirect.redirectPostLogin();
-                     })
+                     .then(loginRedirect.redirectPreLogin)
                      .catch(alerting.errorHandler("Could not login"));
-                model.password = model.username = "";
-                form.$setUntouched();                
+                model.password = "";
             }
         }
+
+        model.signOut = function() {
+            oauth.logout();
+        };
     };
 
     module.controller("loginController", loginController);

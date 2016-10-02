@@ -1,7 +1,7 @@
-﻿(function() {
+﻿
+(function () {
 
-    var app = angular.module("security", ["common", "ngRoute",
-                                          "ngAnimate", "ngMessages","ngSanitize"]);
+    var app = angular.module("security", ["common", "ngRoute", "ngAnimate", "ngMessages"]);
 
     var routes = [
         {

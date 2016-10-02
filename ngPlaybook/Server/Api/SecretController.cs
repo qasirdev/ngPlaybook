@@ -12,7 +12,7 @@ namespace NgPlaybook.Server.Api
             return Ok(new Recipe
             {
                 Id = 1, 
-                Title = "French <em>Toast</em>",
+                Title = "French Toast",
                 Instructions = @"In a medium bowl, whisk together the eggs, milk, and cinnamon. 
 Stir in the orange zest and/or Triple Sec if using. Whisk the mixture until well blended 
 and pour into a shallow bowl, wide enough to place a slice of the bread you will be using. 

@@ -1,32 +1,56 @@
 ﻿(function (module) {
 
-    var oauth = function ($http, formEncode, currentUser) {
+    var oauth = function () {
 
-        function login(username, password) {
-            var config = {
-                headers: {
-                    "content-type": "application/x-www-form-urlencoded"
+        var url = "/login";
+
+        this.setUrl = function (newUrl) {
+            url = newUrl;
+        };
+
+        this.$get = function ($http, formEncode, currentUser) {
+
+            var processToken = function (username) {
+                return function (response) {
+                    currentUser.profile.username = username;
+                    currentUser.profile.token = response.data.access_token;
+                    currentUser.save();
+                    return username;
                 }
             };
 
-            var data = formEncode({
-                username: username,
-                password: password,
-                grant_type: "password"
-            });
+            var login = function (username, password) {
 
-            return $http.post('/login', data, config)
-                 .then(function (response) {
-                     currentUser.setProfile(username, response.data.access_token);
-                     return username;
-                 });
-        };
+                var configuration = {
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                };
 
-        return {
-            login: login
-        };
+                var data = formEncode({
+                    username: username,
+                    password: password,
+                    grant_type: "password"
+                });
+
+                return $http.post(url, data, configuration).then(processToken(username));
+            };
+
+            var logout = function() {
+                currentUser.profile.username = "";
+                currentUser.profile.token = "";
+                currentUser.remove();
+            };
+
+            return {
+                login: login,
+                logout: logout
+            };
+        }
     };
 
-    module.factory("oauth", oauth);
+    module.config(function ($provide) {
+        $provide.provider("oauth", oauth);
+    });
 
 }(angular.module("common")));
