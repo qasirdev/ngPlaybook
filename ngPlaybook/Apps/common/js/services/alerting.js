@@ -1,54 +1,65 @@
-﻿(function (module) {
+﻿(function(common) {
 
-    var alerting = function ($timeout) {
+    var alerting = function($timeout) {
 
         var currentAlerts = [];
-        var alertTypes = ['success', 'info', 'danger', 'warning'];
-
-        var addAlert = function (type, message) {
-
-            var alert = { type: type, message: message };
-
-            currentAlerts.push(alert);
-            $timeout(function () {
-                removeAlert(alert);
-            }, 500);
-        };
-
+        var alertTypes = ["info", "warning", "success", "danger"];
+        
         var addWarning = function (message) {
-            addAlert('warning',message);
-        };
-        var addSuccess = function (message) {
-            addAlert('success',message);
-        };
-        var addInfo = function (message) {
-            addAlert('info',message);
-        };
-        var addDanger = function (message) {
-            addAlert('danger',message);
+            addAlert("warning", message);
         };
 
-        var removeAlert = function (alert) {
-            for (var i = 0; i < currentAlerts.length;i++){
-                if (currentAlerts[i] === alert) {
+        var addInfo = function(message) {
+            addAlert("info", message);
+        };
+
+        var addDanger = function(message) {
+            addAlert("danger", message);
+        };
+
+        var addSuccess = function(message) {
+            addAlert("success", message);
+        };
+
+        var addAlert = function(type, message) {
+            var alert = { type: type, message: message };
+            currentAlerts.push(alert);
+
+            $timeout(function() {
+                removeAlert(alert);
+            }, 10000);
+        };
+
+        var removeAlert = function(alert) {
+            for (var i = 0; i < currentAlerts.length; i++) {
+                if (currentAlerts[i] == alert) {
                     currentAlerts.splice(i, 1);
                     break;
                 }
             }
         };
 
+        var errorHandler = function(description) {
+            return function() {
+                addDanger(description);
+            };
+        };
+
+
         return {
+            removeAlert: removeAlert,
             addAlert: addAlert,
-            addWarning:addWarning,
-            addSuccess:addSuccess,
-            addInfo:addInfo,
-            addDanger:addDanger,
+            errorHandler: errorHandler,
+            addInfo: addInfo,
+            addWarning: addWarning,
             currentAlerts: currentAlerts,
             alertTypes: alertTypes,
-            removeAlert: removeAlert
+            addSuccess: addSuccess,
+            addDanger: addDanger
         };
+
     };
 
-    module.factory('alerting', alerting);
+    common.factory("alerting", alerting);
 
 }(angular.module("common")))

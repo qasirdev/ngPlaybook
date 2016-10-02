@@ -30,6 +30,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -115,11 +116,22 @@
     <Content Include="Apps\common\js\services\alerting.js" />
     <Content Include="Apps\common\js\services\formEncode.js" />
     <Content Include="Apps\common\js\services\loginRedirect.js" />
+    <Content Include="Apps\ui\js\controllers\adminController.js" />
+    <Content Include="Apps\ui\js\controllers\costController.js" />
+    <Content Include="Apps\ui\js\controllers\customersController.js" />
+    <Content Include="Apps\ui\js\controllers\injuriesController.js" />
+    <Content Include="Apps\ui\js\controllers\overallController.js" />
+    <Content Include="Apps\ui\js\directives\calendar.js" />
+    <Content Include="Apps\ui\js\directives\rating.js" />
+    <Content Include="Apps\ui\js\services\employee.js" />
+    <Content Include="Apps\ui\js\services\confirmPromotion.js" />
+    <Content Include="Apps\ui\js\services\stateChangeErrors.js" />
     <Content Include="Apps\common\templates\alerts.html" />
     <Content Include="Apps\diagnostics\js\controllers\errorProneController.js" />
     <Content Include="Apps\diagnostics\module.js" />
     <Content Include="Apps\diagnostics\shell.html" />
     <Content Include="Apps\diagnostics\templates\nav.html" />
+    <Content Include="Apps\ui\module.js" />
     <Content Include="Apps\security\js\services\recipes.js" />
     <Content Include="Apps\common\js\services\requestCounter.js" />
     <Content Include="Apps\common\js\services\localStorage.js" />
@@ -128,18 +140,32 @@
     <Content Include="Apps\security\js\controllers\secretController.js" />
     <Content Include="Apps\security\module.js" />
     <Content Include="Apps\security\shell.html" />
-    <Content Include="Content\spinner.gif" />
+    <Content Include="Apps\security\templates\ajax-loader.gif" />
     <Content Include="Apps\security\templates\home.html" />
     <Content Include="Apps\security\templates\login.html" />
     <Content Include="Apps\security\templates\nav.html" />
     <Content Include="Apps\security\templates\secret.html" />
+    <Content Include="Apps\ui\shell.html" />
+    <Content Include="Apps\ui\templates\admin.html" />
+    <Content Include="Apps\ui\templates\confirmPromotion.html" />
+    <Content Include="Apps\ui\templates\costs.html" />
+    <Content Include="Apps\ui\templates\injuries.html" />
+    <Content Include="Apps\ui\templates\customers.html" />
+    <Content Include="Apps\ui\templates\overall.html" />
+    <Content Include="Apps\ui\templates\dashboard.html" />
+    <Content Include="Apps\ui\templates\nav.html" />
+    <Content Include="Apps\ui\templates\rating.html" />
+    <Content Include="default.html" />
     <Content Include="Global.asax" />
+    <Content Include="Js\google-chart\google-chart.js" />
     <Content Include="Js\jasmine\boot.js" />
     <Content Include="Js\jasmine\console.js" />
     <Content Include="Js\jasmine\jasmine-html.js" />
     <Content Include="Js\jasmine\jasmine.css" />
     <Content Include="Js\jasmine\jasmine.js" />
     <Content Include="Js\jasmine\jasmine_favicon.png" />
+    <Content Include="Js\ui-bootstrap\ui-bootstrap-tpls-0.12.0.js" />
+    <Content Include="Js\ui-router\ui-router.js" />
     <Content Include="packages.config" />
     <Content Include="Protractor\pages\Config.js" />
     <Content Include="Protractor\pages\DiagnosticsPage.js" />
