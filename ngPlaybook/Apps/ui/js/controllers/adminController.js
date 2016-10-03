@@ -1,7 +1,7 @@
 ﻿
 (function (module) {
 
-    var adminController = function (Employee, alerting) {
+    var adminController = function (Employee, alerting, confirmPromotion) {
         var model = this;
 
         model.employees = [
@@ -12,7 +12,7 @@
             new Employee("Glory", "Altimira", 3)
         ];
 
-        model.promote = function (employee) {
+        var removeEmployee = function (employee) {
             for (var i = 0; i < model.employees.length; i++) {
                 if (employee === model.employees[i]) {
                     model.employees.splice(i, 1);
@@ -20,6 +20,9 @@
                     break;
                 }
             };
+        };
+        model.promote = function (employee) {
+            confirmPromotion(employee).then(removeEmployee);            
         };
     };
 

@@ -4,14 +4,14 @@
         <div class="row">
             <div class="col-md-2">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a>Overall</a></li>
-                    <li><a>Customers</a></li>
-                    <li><a>Workplace Injuries</a></li>
-                    <li><a>Costs</a></li>
+                    <li ui-sref-active="active"><a ui-sref="overall">Overall</a></li>
+                    <li ui-sref-active="active"><a ui-sref="customers">Customers</a></li>
+                    <li ui-sref-active="active"><a ui-sref="injuries">Workplace Injuries</a></li>
+                    <li ui-sref-active="active"><a ui-sref="costs">Costs</a></li>
                 </ul>
             </div>
             <div class="col-md-10">
-                
+                <ui-view></ui-view>
             </div>  
         </div>
     </div>
