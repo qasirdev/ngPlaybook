@@ -1,5 +1,5 @@
 ﻿<div ng-controller="adminController as model">
-    <h3 class="text-muted">Employee Admin</h3>
+    <h3 class="text-muted">Dashboard Admin</h3>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -13,7 +13,10 @@
             <tr ng-repeat="employee in model.employees">
                 <td>{{employee.firstName}}</td>
                 <td>{{employee.lastName}}</td>
-                <td><div otf-rating2 value="employee.rating" min="1" max="5"></div></td>
+                <!--<td>{{employee.rating}}</td>-->
+                <td>
+                    <odf-rating value="employee.rating" main="1" max="5"></odf-rating> <!--Angular UI already has <rating> directive-->
+                </td>
                 <td><button class="btn btn-xs btn-danger" ng-click="model.promote(employee)">Promote</button></td>
             </tr>
         </tbody>
