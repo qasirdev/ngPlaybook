@@ -2,8 +2,17 @@
 
     var otfRatingController = function ($scope) {
 
-        this.setRange = function (min, max) {
+        var ngModel;
+
+        this.init = function (min, max, ngModelController) {
+            ngModel = ngModelController;
+            ngModel.$render = this.render;
+
             $scope.stars = new Array(max - min + 1);
+        };
+
+        this.render = function () {
+            $scope.value = ngModel.$viewValue;
         };
 
         $scope.mouseover = function ($index) {
@@ -15,7 +24,10 @@
         };
 
         $scope.click = function ($index) {
-            $scope.value = $index + 1;
+            //$scope.value = $index + 1;
+            ngModel.$setViewValue($index + 1);
+            ngModel.$setTouched();
+            ngModel.$render();
         };
 
         $scope.styles = function ($index) {
@@ -31,16 +43,19 @@
     var otfRating = function () {
 
         return {
-            require: "otfRating",
+            require: ["otfRating","ngModel"], //in home.html we used ng-model for Rating element 
             scope: {
-                value: "="
+                //value: "="
             },
             templateUrl: "templates/rating.html",
             controller: "otfRatingController",
-            link: function (scope, element, attributes, controller) {
+            link: function (scope, element, attributes, controllers) {
+                var ratingController = controllers[0];
+                var ngModelController = controllers[1];
+
                 var min = parseInt(attributes.min || "1");
                 var max = parseInt(attributes.max || "10");
-                controller.setRange(min, max);
+                ratingController.init(min, max, ngModelController);
             }
         };
     };
