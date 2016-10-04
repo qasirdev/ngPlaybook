@@ -4,7 +4,7 @@
     var editProfileController = function(user, $location) {
         this.user = user;
 
-        this.submit = function(isValid) {
+        this.submit = function (isValid) {
             if (isValid) {
                 $location.path("/results");
             }
