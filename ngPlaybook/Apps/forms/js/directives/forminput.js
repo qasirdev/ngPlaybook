@@ -27,10 +27,31 @@
     //    var name=setupDom(element[0]); //get origional element by element[0], origional element is jQuery object
     //    addMessages(formController,element,name);
     //};
+
+    var watcherFor = function (formController, name) {
+        return function () {
+            if(name && formController[name]){
+                return formController[name].$invalid;
+            }
+        };
+    };
+
+    var updaterFor = function (element) {
+        return function (hasError) { //hasError=formController[name].$invalid;
+            if(hasError){
+                element.removeClass("has-success").addClass("has-errror");
+            }else{                
+                element.removeClass("has-error").addClass("has-success");
+            }
+        
+        };
+    };
+
     var link = function ($compile) {
         return function (scope, element, attributes, formController) {
             var name = setupDom(element[0]);
             addMessages(formController, element, name, $compile, scope);
+            scope.$watch(watcherFor(formController, name), updaterFor(element));
         };
     };
 
