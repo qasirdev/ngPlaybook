@@ -25,9 +25,7 @@
 
         $scope.click = function ($index) {
             //$scope.value = $index + 1;
-            ngModel.$setViewValue($index + 1);
-            ngModel.$setTouched();
-            ngModel.$render();
+            ngModel.$setViewValue($index+1);
         };
 
         $scope.styles = function ($index) {

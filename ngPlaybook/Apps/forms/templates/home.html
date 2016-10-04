@@ -7,12 +7,14 @@
 
                 <div forminput>
                     <label for="username">Your user name:</label>
-                    <input type="text" id="username"
-                           placeholder="User name" name="name" required
-                           ng-model="model.user.username">
+                    <input type="text" id="username" name="username" required
+                           placeholder="User name" ng-model="model.user.username"
+                           starts-with="S" username>  <!--this is custom directive-->
+                    
                     <!--<div class="help-block" ng-message="profileForm.username.$error"
                         ng-message-include="template/message.html">
                     </div>-->
+
                 </div>
 
                 <div forminput>
